@@ -34,7 +34,6 @@ export default {
       items: [],
       statusItems: [],
       nextTodoId: 0,
-      Status: true,
       All: true
     };
   },
