@@ -48,7 +48,6 @@ export default {
         (this.item = "");
     },
     changeStatus(id) {
-      console.log(id);
       this.items.find(it => it.id === id).active =
         this.items.find(it => it.id === id).active == true ? false : true;
     },
@@ -58,8 +57,6 @@ export default {
     chooseComplete() {
       this.All = false;
       this.statusItems=this.items.filter(item => item.active==false)
-      console.log(this.statusItems)
-          console.log(this.items)
     },
     chooseActive() {
       this.All = false;
