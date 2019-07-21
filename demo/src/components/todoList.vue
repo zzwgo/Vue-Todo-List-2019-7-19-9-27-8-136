@@ -5,16 +5,24 @@
     <input v-model="item" placeholder=" " />
     <button @click="addItem">Add</button>
     <div>
-      <ol id="example" :class="{active:false}">
-        <li v-for="item in items" :key="item.id">
-          <input type="checkbox" @change="changeStatus(item.id)" />
-          {{ item.value }} {{ item.active }}
-        </li>
+      <ol id="example">
+        <div v-if="All">
+          <li v-for="item in items" :key="item.id">
+            <input type="checkbox" @change="changeStatus(item.id)" />
+            <span>{{ item.value }} {{ item.active }}</span>
+          </li>
+        </div>
+        <div v-else>
+          <li v-for="item in statusItems" :key="item.id">
+            <input type="checkbox" @change="changeStatus(item.id)" />
+            <span>{{ item.value }} {{ item.active }}</span>
+          </li>
+        </div>
       </ol>
     </div>
-    <button>ALL</button>
-    <button>Active</button>
-    <button>Complete</button>
+    <button @click="chooseAll">ALL</button>
+    <button @click="chooseActive">Active</button>
+    <button @click="chooseComplete">Complete</button>
   </div>
 </template>
 <script>
@@ -24,7 +32,10 @@ export default {
     return {
       item: "",
       items: [],
-      nextTodoId: 0
+      statusItems: [],
+      nextTodoId: 0,
+      Status: true,
+      All: true
     };
   },
   methods: {
@@ -40,6 +51,19 @@ export default {
       console.log(id);
       this.items.find(it => it.id === id).active =
         this.items.find(it => it.id === id).active == true ? false : true;
+    },
+    chooseAll() {
+      this.All = true;
+    },
+    chooseComplete() {
+      this.All = false;
+      this.statusItems=this.items.filter(item => item.active==false)
+      console.log(this.statusItems)
+          console.log(this.items)
+    },
+    chooseActive() {
+      this.All = false;
+      this.statusItems=this.items.filter(item=> item.active==true)
     }
   }
 };
