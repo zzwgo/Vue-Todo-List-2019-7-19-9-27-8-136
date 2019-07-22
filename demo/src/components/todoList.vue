@@ -48,18 +48,18 @@ export default {
     },
     changeStatus(id) {
       this.items.find(it => it.id === id).active =
-        this.items.find(it => it.id === id).active == true ? false : true;
+        this.items.find(it => it.id === id).active === true ? false : true;
     },
     chooseAll() {
       this.All = true;
     },
     chooseComplete() {
       this.All = false;
-      this.statusItems=this.items.filter(item => item.active==false)
+      this.statusItems=this.items.filter(item => item.active===false)
     },
     chooseActive() {
       this.All = false;
-      this.statusItems=this.items.filter(item=> item.active==true)
+      this.statusItems=this.items.filter(item=> item.active===true)
     }
   }
 };
