@@ -1,7 +1,7 @@
 <template>
   <div id="inputBar">
-    <input v-model="item" placeholder=" " @keydown.enter="addItem" />
-    <button @click="addItem">Add</button>
+    <input v-model="item"  @keydown.enter="getItem" />
+    <button @click="getItem">Add</button>
   </div>
 </template>
 <script>
@@ -9,20 +9,13 @@ export default {
   name: "inputBar",
   data: function() {
     return {
-      nextTodoId: 0,
-      items: [],
       item: ""
     };
   },
   methods: {
-    addItem() {
-      this.items.push({
-        id: this.nextTodoId++,
-        value: this.item,
-        active: true
-      });
+    getItem() {
+      this.$emit("getItem", this.item);
       this.item = "";
-      this.$emit("change", this.items);
     }
   }
 };

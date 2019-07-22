@@ -1,8 +1,8 @@
 <template>
   <div id="todoList">
-    <Title/>
-    <Body/>
-    
+    <Title></Title>
+    <Body></Body>
+    <Footer></Footer>
   </div>
 </template>
 <script>
@@ -24,4 +24,9 @@ export default {
   }
 };
 </script>
-
+<style>
+body {
+    font: normal normal 13px/16px "Open Sans", sans-serif;
+    background: #ccc;
+}
+</style>

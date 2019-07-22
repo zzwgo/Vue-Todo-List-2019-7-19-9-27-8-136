@@ -12,3 +12,10 @@ export default {
   }
 }
 </script>
+<style>
+#app {
+    font: normal normal 13px/16px "Open Sans", sans-serif;
+    background: #ccc;
+        display: block;
+}
+</style>

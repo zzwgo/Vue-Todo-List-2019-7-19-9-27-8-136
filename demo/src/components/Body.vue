@@ -1,43 +1,51 @@
 <template>
   <div>
-    <InputBar @change="updateList($event)"></InputBar>
-    <ListContainer :items="items" :statusItems="statusItems" :All="All" ></ListContainer>
-
-    <button @click="chooseAll">ALL</button>
-    <button @click="chooseActive">Active</button>
-    <button @click="chooseComplete">Complete</button>
+    <InputBar @getItem="addItem($event)"></InputBar>
+    <ListContainer :items="chooseItems"></ListContainer>
   </div>
 </template>
 <script>
+import bus from "../assets/BUS";
 import InputBar from "./InputBar";
 import ListContainer from "./ListContainer";
 export default {
   name: "Body",
   data: function() {
     return {
+      nextTodoId: 0,
       items: [],
-      statusItems: [],
-      All: true      
+      status: ""
     };
+  },
+  mounted() {
+    bus.$on("status", msg => {
+      this.status = msg;
+    });
   },
   components: {
     InputBar,
     ListContainer
   },
+  computed: {
+    chooseItems() {
+      switch (this.status) {
+        case "ACTIVE":
+          return this.items.filter(item => item.active === true);
+        case "COMPLETE":
+          return this.items.filter(item => item.active === false);
+        case "ALL":
+        default:
+          return this.items;
+      }
+    }
+  },
   methods: {
-    updateList(val) {
-      this.items = val;
-    },
-    chooseAll() {
-      this.All = true;
-    },
-    chooseComplete() {
-      this.All = false;
-      this.statusItems = this.items.filter(item => item.active === false);
-    },
-    chooseActive() {
-      this.All = false;
-      this.statusItems = this.items.filter(item => item.active === true);
+    addItem(val) {
+      this.items.push({
+        id: this.nextTodoId++,
+        value: val,
+        active: true
+      });
     }
   }
 };
