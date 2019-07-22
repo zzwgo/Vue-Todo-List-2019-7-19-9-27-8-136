@@ -1,21 +1,26 @@
 <template>
   <div id="app">
-    <TodoList/>
+    <TodoList />
   </div>
 </template>
 <script>
-import TodoList from './components/TodoList.vue'
+import TodoList from "./components/TodoList.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     TodoList
   }
-}
+};
 </script>
 <style>
+body {
+  background-color: #ccc;
+}
 #app {
-    font: normal normal 13px/16px "Open Sans", sans-serif;
-    background: #ccc;
-        display: block;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

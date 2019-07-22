@@ -12,21 +12,23 @@ import Footer from "./Footer.vue";
 export default {
   name: "todoList",
   data: function() {
-    return {
-    };
+    return {};
   },
   components: {
     Title,
     Body,
     Footer
   },
-  methods: {
-  }
+  methods: {}
 };
 </script>
 <style>
-body {
-    font: normal normal 13px/16px "Open Sans", sans-serif;
-    background: #ccc;
+#todoList {
+  padding: 20px;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 40px;
+  background: white;
+  border-radius: 5px;
 }
 </style>
