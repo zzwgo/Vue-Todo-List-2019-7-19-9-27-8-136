@@ -3,7 +3,12 @@
     <ol id="example">
       <li v-for="item in items" :key="item.id">
         <input type="checkbox" @change="changeStatus(item.id)" />
-        <span :class="{change:!item.active}">{{ item.value }}</span>
+        <span
+          @keydown.enter="updateItem($event,item.id)"
+          @dblclick="changeEditable"
+          :contenteditable="editable"
+          :class="{change:!item.active}"
+        >{{ item.value }}</span>
       </li>
     </ol>
   </div>
@@ -17,9 +22,17 @@ export default {
     };
   },
   props: {
-    items: Array
+    items: Array,
+    editable: false
   },
   methods: {
+    updateItem(event, id) {
+      this.items[id].value = event.target.innerText;
+      this.editable = false;
+    },
+    changeEditable() {
+      this.editable = true;
+    },
     changeStatus(id) {
       this.items.find(it => it.id === id).active =
         this.items.find(it => it.id === id).active === true ? false : true;
