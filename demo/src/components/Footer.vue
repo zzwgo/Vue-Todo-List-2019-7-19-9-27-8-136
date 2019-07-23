@@ -19,13 +19,11 @@ export default {
   name: "Footer",
   data: function() {
     return {
-      status: ""
     };
   },
   methods: {
     changeStatus(val) {
-      this.status = val;
-      bus.$emit("status", this.status);
+      this.$store.commit("setStatus",val)
     }
   }
 };

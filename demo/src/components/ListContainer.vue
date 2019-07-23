@@ -1,10 +1,10 @@
 <template>
   <div>
     <ol id="example">
-      <li v-for="item in items" :key="item.id">
+      <li v-for="item in chooseItems" :key="item.id">
         <input type="checkbox" @change="changeStatus(item.id)" />
         <span
-          @keydown.enter="updateItem($event,item.id)"
+          @keydown.enter.prevent="updateItem($event,item.id)"
           @dblclick="changeEditable"
           :contenteditable="editable"
           :class="{change:!item.active}"
@@ -18,24 +18,29 @@ export default {
   name: "ListContainer",
   data: function() {
     return {
-      item: ""
+      item: "",
+      editable: false
     };
   },
-  props: {
-    items: Array,
-    editable: false
+  computed: {
+    chooseItems() {
+      return this.$store.getters.chooseItems;
+    },
+    getItems() {
+      return this.$store.getters.getItems;
+    }
   },
   methods: {
     updateItem(event, id) {
-      this.items[id].value = event.target.innerText;
+      this.getItems[id].value = event.target.innerText;
       this.editable = false;
     },
     changeEditable() {
       this.editable = true;
     },
     changeStatus(id) {
-      this.items.find(it => it.id === id).active =
-        this.items.find(it => it.id === id).active === true ? false : true;
+      this.getItems.find(it => it.id === id).active =
+        this.getItems.find(it => it.id === id).active? false : true;
     }
   }
 };
