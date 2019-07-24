@@ -22,7 +22,7 @@ export default {
   methods: {}
 };
 </script>
-<style>
+<style scoped>
 #todoList {
   padding: 20px;
   width: 400px;

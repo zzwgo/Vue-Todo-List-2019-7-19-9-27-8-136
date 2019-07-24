@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <TodoList />
+    <!-- <TodoList /> -->
+     <router-view></router-view>
+
   </div>
 </template>
 <script>
@@ -12,8 +14,11 @@ export default {
   }
 };
 </script>
-<style>
+<style >
 body {
+  text-align: center;
+}
+/* body {
   background-color: #ccc;
 }
 #app {
@@ -22,5 +27,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
+
 </style>

@@ -20,7 +20,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 #button {
   display: inline-block;
   background-color: #fc999b;

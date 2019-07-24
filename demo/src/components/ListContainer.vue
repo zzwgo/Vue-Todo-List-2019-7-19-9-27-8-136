@@ -45,20 +45,20 @@ export default {
   }
 };
 </script>
-<style>
-ol {
+<style >
+#example {
   padding-left: 20px;
   display: block;
   list-style-type: decimal;
 }
-li {
+#example li {
   padding: 5px;
   color: #000;
   display: list-item;
   text-align: -webkit-match-parent;
   list-style-type: decimal;
 }
-li:nth-child(even) {
+#example li:nth-child(even) {
   background: #f4ecec;
 }
 .change {

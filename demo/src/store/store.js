@@ -6,7 +6,8 @@ const store = new Vuex.Store({
   state: {
     itemId: 0,
     status: '',
-    items: []
+    items: [],
+    username:''
   },
   mutations: {
     setStatus: (state, payload) => {
@@ -18,6 +19,12 @@ const store = new Vuex.Store({
         value: payload.value,
         active: true
       });
+    },
+    setUserName:(state,payload)=>{
+      state.username=payload
+    },
+    initItems:(state)=>{
+      state.items=[]
     }
   },
   getters: {
@@ -34,6 +41,17 @@ const store = new Vuex.Store({
         default:
           return state.items;
       }
+    },
+    getUserName:state=>{
+      return state.username
+    }
+  },
+  actions: {
+    setUserName ({commit},payload) {
+     commit('setUserName',payload)
+    },
+    initItems({commit}){
+      commit('initItems')
     }
   }
 })

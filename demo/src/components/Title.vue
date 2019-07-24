@@ -15,7 +15,7 @@ export default {
   methods: {}
 };
 </script>
-<style>
+<style scoped>
 h2 {
   display: block;
   font-size: 1.5em;
